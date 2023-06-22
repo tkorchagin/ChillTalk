@@ -172,7 +172,7 @@ def message_handler(message):
             formula_to_answer=USERS_INFO[chat_id].get('formula_to_answer', ''),
             user_answer=message.text
         )
-        bot_send_message(chat_id, WAIT_MESSAGE_TEXT, message=message)
+        bot_send_message(chat_id, t.WAIT_MESSAGE_TEXT, message=message)
         bot.send_chat_action(chat_id, 'typing')
         # bot_send_message(chat_id, message_to_process, message=message)
 
