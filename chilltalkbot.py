@@ -187,6 +187,8 @@ def message_handler(message):
 
 
 if __name__ == '__main__':
+    print('#started')
+    
     while True:
         try:
             bot.polling()
