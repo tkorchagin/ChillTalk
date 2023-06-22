@@ -125,6 +125,7 @@ def bot_send_message(chat_id, text_to_send, message=None):
 def handle_start(message):
     chat_id = message.chat.id
     bot_send_message(chat_id, t.START_TEXT)
+    time.sleep(5)
 
     send_new_task(
         chat_id=chat_id,
