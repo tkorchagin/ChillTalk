@@ -112,6 +112,7 @@ def bot_send_message(chat_id, text_to_send, message=None):
     try:
         keyboard = types.ReplyKeyboardMarkup(row_width=1)
         keyboard.add(types.KeyboardButton(t.CHANGE_SITUATION_TEXT))
+        keyboard.add(types.KeyboardButton(t.CHANGE_DECODING_TEXT))
 
         if message:
             bot.reply_to(message, text_to_send, reply_markup=keyboard, parse_mode='HTML')
@@ -146,6 +147,15 @@ def handle_change_dictionary(message):
         techniques=t.TECHNIQUES,
         management_impact=t.MANAGEMENT_IMPACT,
     )
+
+
+@bot.message_handler(func=lambda message: message.text.lower() == t.CHANGE_DECODING_TEXT.lower())
+def handle_change_dictionary(message):
+    chat_id = message.chat.id
+    bot.send_chat_action(chat_id, 'typing')
+    text_to_send = random.choice(t.DECODING_SITUATIONS)
+
+    bot_send_message(chat_id, text_to_send, message=None)
 
 
 @bot.message_handler(func=lambda message: True)
