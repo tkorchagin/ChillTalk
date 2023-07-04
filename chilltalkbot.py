@@ -150,11 +150,11 @@ def handle_change_dictionary(message):
 
 
 @bot.message_handler(func=lambda message: message.text.lower() == t.CHANGE_DECODING_TEXT.lower())
-def handle_change_dictionary(message):
+def handle_change_decoding_text(message):
     chat_id = message.chat.id
     bot.send_chat_action(chat_id, 'typing')
     text_to_send = random.choice(t.DECODING_SITUATIONS)
-
+    print(chat_id, text_to_send)
     bot_send_message(chat_id, text_to_send, message=None)
 
 
